@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Feedback Form</title>
+</head>
+<body style="background-color: #f0f8ff; font-family: 'Segoe UI', sans-serif; padding: 40px;">
+
+  <h2 style="text-align: center; color: #2c3e50;">📢 We Value Your Feedback</h2>
+
+  <form onsubmit="return validateForm()" style="background-color: #ffffff; padding: 25px; border-radius: 10px; max-width: 500px; margin: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+
+    <label for="name" style="font-weight: bold; color: #333;">Name:</label><br>
+    <input type="text" id="name" name="name" style="width: 100%; padding: 8px; margin-bottom: 15px; font-size: 1em;"><br>
+
+    <label for="email" style="font-weight: bold; color: #333;">Email:</label><br>
+    <input type="email" id="email" name="email" style="width: 100%; padding: 8px; margin-bottom: 15px; font-size: 1em;"><br>
+
+    <label style="font-weight: bold; color: #333;">Gender:</label><br>
+    <input type="radio" id="male" name="gender" value="Male">
+    <label for="male" style="margin-right: 10px;">Male</label>
+    <input type="radio" id="female" name="gender" value="Female">
+    <label for="female">Female</label><br><br>
+
+    <label for="type" style="font-weight: bold; color: #333;">Feedback Type:</label><br>
+    <select id="type" name="type" style="width: 100%; padding: 8px; font-size: 1em; margin-bottom: 20px;">
+      <option value="">-- Select --</option>
+      <option value="suggestion">Suggestion</option>
+      <option value="complaint">Complaint</option>
+      <option value="compliment">Compliment</option>
+    </select><br>
+
+    <input type="submit" value="Submit" 
+           style="background-color: #4CAF50; color: white; padding: 10px 20px; 
+           font-size: 1em; border: none; border-radius: 5px; cursor: pointer;">
+
+  </form>
+
+  <script>
+function validateForm() {
+  let name = document.getElementById("name").value.trim();
+  let email = document.getElementById("email").value.trim();
+  let gender = document.querySelector('input[name="gender"]:checked');
+  let feedbackType = document.getElementById("type").value;
+
+  if (!name || !email || !gender || !feedbackType) {
+    alert("All fields are required.");
+    return false;
+  }
+
+  if (!email.includes("@") || !email.includes(".")) {
+    alert("Invalid email format.");
+    return false;
+  }
+
+  alert("Form submitted successfully!");
+  return true;
+}
+</script>
+
+</body>
+</html>
